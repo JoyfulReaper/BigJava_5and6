@@ -20,10 +20,11 @@ public class NamePrinter {
 
     public static void printLines(int number) 
     {
-        System.out.print(" ");
+        System.out.print("+");
         for(int i = 0; i < number; i++)
         {
             System.out.print("-");
         }
+        System.out.print("+");
     }
 }
