@@ -17,7 +17,7 @@ public class TestComponent extends JComponent
         Rectangle r = new Rectangle(10, 10, 50, 100);
         g2.setColor(Color.RED);
         g2.fill(r);
-
+        
         r.translate(50, 0);
         g2.setColor(Color.BLUE);
         g2.fill(r);
