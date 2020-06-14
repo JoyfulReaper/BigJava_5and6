@@ -19,7 +19,7 @@ public class StudentTester {
             System.out.print("Quiz #: " + i + " grade: ");
             s.addQuiz(in.nextDouble());
         }
-
+        in.close();
         System.out.println("Student: " + name + " Average Grade is: " + s.getAverageScore());
     }
 }
