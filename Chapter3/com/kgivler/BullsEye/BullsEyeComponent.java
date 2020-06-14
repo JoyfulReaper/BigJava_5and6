@@ -3,8 +3,7 @@ package com.kgivler.BullsEye;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JComponent;
-
-import java.awt.Rectangle;
+//import java.awt.Rectangle;
 
 public class BullsEyeComponent extends JComponent {
     public void paintComponent(Graphics g)

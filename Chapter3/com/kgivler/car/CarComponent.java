@@ -3,6 +3,7 @@ package com.kgivler.car;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JComponent;
+import java.awt.Color;
 
 /**
  * This Component draws two car shapes
@@ -16,6 +17,9 @@ public class CarComponent extends JComponent {
         int x = getWidth() - 60;
         int y = getHeight() - 30;
         Car Car2 = new Car(x,y);
+
+        Car1.setColor(Color.RED);
+        Car2.setColor(Color.BLUE);
 
         Car1.draw(g2);
         Car2.draw(g2);

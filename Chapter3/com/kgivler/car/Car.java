@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
+import java.awt.Color;
 
 public class Car {
     /**
@@ -51,13 +52,23 @@ public class Car {
         Line2D.Double rearWindsheild =
             new Line2D.Double(r3, r4);
 
+        Color orginal = g2.getColor();
+        g2.setColor(color);
         g2.draw(body);
         g2.draw(frontTire);
         g2.draw(rearTire);
         g2.draw(frontWindsheild);
         g2.draw(roofTop);
         g2.draw(rearWindsheild);
+        g2.setColor(orginal);
     }
+
+    public void setColor(Color c)
+    {
+        color = c;
+    }
+
     private int xLeft;
     private int yTop;
+    private Color color;
 }
