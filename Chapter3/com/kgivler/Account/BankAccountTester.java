@@ -16,5 +16,10 @@ public class BankAccountTester {
         b2.addInterest(10);
         System.out.println(b2.getBalance());
         System.out.println("Expected: 1100");
+
+        SavingsAccount s1 = new SavingsAccount(1000, 10);
+        s1.addInterest();
+        System.out.println(s1.getBalance());
+        System.out.println("Expected: 1100");
     }
 }
