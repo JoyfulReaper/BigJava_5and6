@@ -1,6 +1,7 @@
+package com.kgivler.Account;
+
 /**
- * A bank account has a balance that can be changed
- * by deposits and withdrawals.
+ * A bank account has a balance that can be changed by deposits and withdrawals.
  */
 public class BankAccount
 {
@@ -63,5 +64,14 @@ public class BankAccount
     public int getAccountNumber()
     {
         return accountNumber;
+    }
+
+    /**
+     * Add interest to the bank account
+     * @param percent Amount of interest to add
+     */
+    public void addInterest(double percent)
+    {
+        balance += (percent / 100) * balance;
     }
 }
