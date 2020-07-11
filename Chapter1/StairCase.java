@@ -7,6 +7,8 @@ public class StairCase {
         System.out.print("How many stairs? ");
 
         printStairs(in.nextInt());
+
+        in.close();
     }
 
     public static void printStairs(int boxes)
