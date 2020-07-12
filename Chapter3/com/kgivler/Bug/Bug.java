@@ -73,7 +73,7 @@ class BugTester
             String command = in.nextLine();
             if(command.length() < 1)
                 command = " ";
-                
+
             command = command.substring(0, 1).toUpperCase();
 
             switch(command)
@@ -85,7 +85,12 @@ class BugTester
                     bug.move();
                     break;
                 case "G":
-                    System.out.println("Postion: " + bug.getPostion());
+                    for(int i = -40; i <= 40; i++)
+                        if(i == bug.getPostion())
+                            System.out.print("*");
+                        else
+                            System.out.print("-");
+                    System.out.println("\nPostion: " + bug.getPostion());
                     break;
                 case "Q":
                     quit = true;
