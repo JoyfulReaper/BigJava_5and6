@@ -9,7 +9,9 @@ import java.math.BigDecimal;
 public class BankAccount
 {
     private BigDecimal balance;
-    private BigDecimal transactionFee;
+    private BigDecimal transactionFee = new BigDecimal(1);
+    private int transactions = 0;
+    private int complimentaryTransactions = 3;
 
     /**
      * Construct a BankAccount with a zero balance.
@@ -55,6 +57,7 @@ public class BankAccount
         if (amount.doubleValue() < 0)
             throw new IllegalArgumentException("amount cannot be negative.");
 
+        transactions++;
         balance = balance.add(amount);
     }
 
@@ -76,6 +79,7 @@ public class BankAccount
         if(amount.doubleValue() < 0)
             throw new IllegalArgumentException("amount cannot be negative.");
         
+        transactions++;
         balance = balance.subtract(amount);
     }
 
@@ -102,14 +106,23 @@ public class BankAccount
      */
     public String toString()
     {
-        return getClass().getName() + "[balance=" + balance.doubleValue() + "]";
+        return getClass().getName() + "[balance=" + balance.doubleValue() + ",transactions=" + transactions + 
+            ",transactionFee=" + transactionFee.doubleValue() + ",ComplimentaryTransactions=" + complimentaryTransactions + "]";
     }
 
+    /**
+     * Set the per transaction fee for this BankAccount
+     * @param transactionFee the per transaction fee
+     */
     public void setTransactionFee(double transactionFee)
     {
         setTransactionFee(new BigDecimal(transactionFee));
     }
 
+    /**
+     * Set the per transaction fee for this BankAccount
+     * @param transactionFee the per transaction fee
+     */
     public void setTransactionFee(BigDecimal transactionFee)
     {
         if (transactionFee.doubleValue() < 0)
@@ -118,13 +131,44 @@ public class BankAccount
         this.transactionFee = transactionFee;
     }
 
+    /**
+     * Get the per transaction fee for this BankAccount
+     * as a double
+     * @return The per transaction fee
+     */
     public double getTransactionFeeAsDouble()
     {
         return transactionFee.doubleValue();
     }
 
+    /**
+     * Get the per transaction fee for this BankAccount
+     * @return The per transaction fee
+     */
     public BigDecimal getTransactionFee() 
     {
         return transactionFee;
+    }
+
+    public void setComplimentaryTransactions(int num)
+    {
+        this.complimentaryTransactions = num;
+    }
+
+    public int getComplimentaryTransactions()
+    {
+        return complimentaryTransactions;
+    }
+
+    /**
+     * Deduct the transaction fees from this BankAccount for the month
+     * and reset the transaction count. Should only be called on the last day of the month.
+     */
+    public void deductMonthlyCharge()
+    {
+        if(transactions > complimentaryTransactions)
+            balance = balance.subtract(BigDecimal.valueOf( (transactions - complimentaryTransactions) * transactionFee.doubleValue()));
+
+        transactions = 0;
     }
 }
